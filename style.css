@@ -1,0 +1,311 @@
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f1f1f1;
+}
+
+.app-container {
+    max-width: 430px;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+}
+
+/* Page Logic */
+.page {
+    display: none; /* Sembunyi semua */
+}
+
+.page.active {
+    display: flex; /* Munculkan yang aktif */
+    flex-direction: column;
+}
+
+/* Elements */
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    filter: invert(18%) sepia(85%) saturate(4445%) hue-rotate(352deg) brightness(81%) contrast(92%);
+}
+
+.logo-icon-sm {
+    width: 20px;
+    height: 20px;
+    filter: invert(18%) sepia(85%) saturate(4445%) hue-rotate(352deg) brightness(81%) contrast(92%);
+}
+
+.welcome-title {
+    font-size: 26px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2.5rem;
+}
+
+.btn-main {
+    background-color: #C11F24;
+    color: white;
+    border-radius: 50px;
+    font-weight: 700;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+    box-shadow: 0 10px 20px rgba(193, 31, 36, 0.15);
+}
+
+.btn-main:active {
+    transform: scale(0.96);
+}
+
+.social-box {
+    width: 56px;
+    height: 56px;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+}
+
+/* Sign In Specifics */
+.card-container {
+    border: 1px solid #F3F4F6;
+    border-radius: 24px;
+    padding: 24px;
+    position: relative;
+    background: white;
+    overflow: hidden;
+}
+
+.corner-decoration {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: #FDF2F2;
+    border-bottom-left-radius: 100%;
+    z-index: 0;
+}
+
+.form-content {
+    position: relative;
+    z-index: 10;
+}
+
+.input-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: #4B5563;
+    margin-bottom: 6px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-box {
+    background-color: #F3F4F6;
+    border-radius: 12px;
+    padding: 14px 16px;
+    width: 100%;
+    outline: none;
+    font-size: 14px;
+    color: #1F2937;
+    border: 1px solid transparent;
+}
+
+.input-box:focus {
+    border-color: #C11F24;
+}
+
+/* Efek Halus saat pindah halaman */
+.page {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Memastikan konten Homepage tidak tertutup Navigasi Bawah */
+#homepage {
+    padding-bottom: 100px;
+    overflow-y: auto;
+}
+
+/* Custom shadow untuk cards */
+.shadow-red-100 {
+    box-shadow: 0 10px 20px rgba(193, 31, 36, 0.1);
+}
+
+/* Animasi Hover & Klik pada Tombol Utama */
+.btn-main {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-main:hover {
+    background-color: #A0191D;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(193, 31, 36, 0.25);
+}
+
+.btn-main:active {
+    transform: scale(0.95) translateY(0);
+}
+
+/* Styling & Animasi Bottom Nav */
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #9CA3AF; /* Gray 400 */
+    transition: all 0.2s ease;
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+.nav-item.active {
+    color: #C11F24;
+    font-weight: 700;
+}
+
+.nav-item:hover {
+    background-color: #FDF2F2;
+    color: #C11F24;
+}
+
+/* Card Interaction */
+.card-container {
+    transition: transform 0.3s ease;
+}
+
+.card-container:focus-within {
+    transform: scale(1.01);
+}
+
+/* Input Focus Glow */
+.input-box {
+    transition: all 0.2s ease;
+}
+
+.input-box:focus {
+    background-color: white;
+    border-color: #C11F24;
+    box-shadow: 0 0 0 4px rgba(193, 31, 36, 0.1);
+}
+
+/* Progress Stepper Line */
+.relative .absolute {
+    z-index: 0;
+}
+
+/* Biar scroll lancar di halaman queue */
+#queue-page {
+    overflow-y: auto;
+    height: 100vh;
+}
+
+/* Menghilangkan scrollbar tapi tetep bisa di-scroll */
+#queue-page {
+    -ms-overflow-style: none;  /* Untuk Internet Explorer/Edge */
+    scrollbar-width: none;     /* Untuk Firefox */
+}
+
+#queue-page::-webkit-scrollbar {
+    display: none;             /* Untuk Chrome, Safari, dan Opera */
+}
+
+/* Pastikan page Queue bisa di-scroll vertikal */
+#queue-page {
+    display: none; /* Sembunyi default */
+    overflow-y: auto; /* Izin scroll */
+    -webkit-overflow-scrolling: touch; /* Biar scroll di iPhone mulus */
+}
+
+#queue-page.active {
+    display: block !important; /* Muncul pas aktif */
+}
+
+/* Biar garis vertikal stepper progress di Queue Page kelihatan */
+#queue-page .relative .absolute {
+    z-index: 0;
+}
+
+/* Styling khusus buat logo tetes darah di Header */
+.logo-icon {
+    width: 20px;          /* Atur lebar logo (sesuaiin aja bang) */
+    height: 20px;         /* Atur tinggi logo (sesuaiin aja bang) */
+    object-fit: contain;  /* Biar gambarnya gak gepeng */
+}
+
+/* Container Splash Screen */
+.splash-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradasi sesuai Frame 2.jpg */
+    background: linear-gradient(180deg, #FFFFFF 0%, #C11F24 100%);
+    display: flex;
+    justify-content: center; /* Tengah horizontal */
+    align-items: center;     /* Tengah vertikal */
+    z-index: 9999;
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Konten dibikin kolom biar logo di atas, teks di bawah */
+.splash-content {
+    display: flex;
+    flex-direction: column; /* BIAR ATAS BAWAH COK */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Logo: Ukuran gue sesuain biar pas (sekitar 80px di splash) */
+.splash-logo {
+    width: 80px; 
+    height: auto;
+    margin-bottom: 16px; /* Jarak antara logo dan tulisan */
+}
+
+/* Teks DonorQueue */
+.splash-text {
+    color: #C11F24;
+    font-size: 2rem; /* Sesuain biar mantap */
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+/* Class buat slide ke atas */
+.splash-up {
+    transform: translateY(-100%);
+}
+
+.mobile-wrapper {
+    width: 100%;
+    max-width: 430px; /* Batas maksimal buat layar gede/tablet */
+    min-height: 100vh; /* Biar ngikutin tinggi layar HP masing-masing */
+    margin: 0 auto;
+    background-color: #ffffff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Biar gambar banner atau kartu profile nggak pecah/gepeng */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Pastikan padding pake satuan rem atau % biar proporsional */
+.page {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
